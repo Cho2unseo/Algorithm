@@ -1,31 +1,11 @@
 #include <iostream>
-#include <queue>
+#include <string>
 
 using namespace std;
 
 int main() {
+    string s = "SciComLove";
     int n;
-    queue <char> q;
     cin >> n;
-    q.push('S');    
-    q.push('c');
-    q.push('i');
-    q.push('C');
-    q.push('o');
-    q.push('m');
-    q.push('L');
-    q.push('o');
-    q.push('v');
-    q.push('e');
-
-    for (int i = 0; i < n; i++) {
-        q.push(q.front());
-        q.pop();
-    }
-    while (!q.empty()) {
-        cout << q.front();
-        q.pop();
-    }
-
-    return 0;
+    cout << s.substr(n % 10) << s.substr(0, n % 10);
 }
