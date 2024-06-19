@@ -4,8 +4,7 @@
 using namespace std;
 
 int main() {
-    int t, n, minn = 100;
-    long long s = 0;
+    int t, n, s, minn;
     cin >> t;
     for (int i = 0; i < t; i++) {
         s = 0;
@@ -14,11 +13,9 @@ int main() {
             cin >> n;
             if (n % 2 == 0) {
                 s = s + n;
-                if (minn > n) minn = n;
+                minn = min(minn, n);
             }
         }
         cout << s << ' ' << minn << "\n";
     }
-
-    return 0;
 }
