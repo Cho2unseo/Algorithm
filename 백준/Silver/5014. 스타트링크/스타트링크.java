@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Main {
 
     static int f, s, g, u, d;
-    static int[] arr;
     static int[] move;
 
     public static void bfs(int start) {
@@ -47,7 +46,6 @@ public class Main {
         g = sc.nextInt();
         u = sc.nextInt();
         d = sc.nextInt();
-        arr = new int[f + 1];
         bfs(s);
     }
 }
