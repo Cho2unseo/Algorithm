@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
@@ -12,6 +10,9 @@ public class Main {
         int[] arr = new int[n];
         for (int i = 0; i < n; i++) arr[i] = Integer.parseInt(st.nextToken());
         Arrays.sort(arr);
-        for (int i = 0; i < n; i++) System.out.print(arr[i] + " ");
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        for (int i = 0; i < n; i++) bw.write(arr[i] + " ");
+        bw.flush();
+        bw.close();
     }
 }
