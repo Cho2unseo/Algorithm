@@ -1,6 +1,7 @@
 import java.util.*;
 
 class Solution {
+    
     static boolean check(String s) {
         Stack<Character> stack = new Stack<>();
         for (int i = 0; i < s.length(); i++) {
@@ -27,10 +28,9 @@ class Solution {
     
     public int solution(String s) {
         int answer = 0;
-        String news = s + s;
+        String newS = s + s;
         for (int i = 0; i < s.length(); i++) {
-            String rotatedS = news.substring(i, i + s.length());
-            // System.out.println(rotatedS);
+            String rotatedS = newS.substring(i, i + s.length());
             if (check(rotatedS)) answer++;
         }
         return answer;
