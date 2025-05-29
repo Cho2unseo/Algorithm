@@ -12,14 +12,15 @@ class Solution {
             int cur = queue.poll();
             for (int a: graph.get(cur)) {
                 if (!isVisited[a]) {
-                    queue.offer(a);
                     isVisited[a] = true;
+                    queue.offer(a);
                     count++;
                 }
             }
         }
         return count;
     }
+    
     
     public int solution(int n, int[][] wires) {
         int answer = 101;
