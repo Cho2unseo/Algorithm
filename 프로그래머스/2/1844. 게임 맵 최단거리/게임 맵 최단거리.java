@@ -1,14 +1,16 @@
 import java.util.*;
 
 class Solution {
-
+    
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
     
-    static int bfs(int[][] maps, boolean[][] isVisited) {
+    public int solution(int[][] maps) {
+        int answer = -1;
+        boolean[][] isVisited = new boolean[maps.length][maps[0].length];
         Queue<int[]> queue = new ArrayDeque<>();
-        queue.offer(new int[] {0, 0, 1});
         isVisited[0][0] = true;
+        queue.offer(new int[] {0, 0, 1});
         while (!queue.isEmpty()) {
             int[] cur = queue.poll();
             if (cur[0] == maps.length - 1 && cur[1] == maps[0].length - 1) return cur[2];
@@ -22,14 +24,6 @@ class Solution {
                 }
             }
         }
-        
-        return -1;
-    }
-    
-    public int solution(int[][] maps) {
-        int answer = 0;
-        boolean[][] isVisited = new boolean[maps.length][maps[0].length];
-        answer = bfs(maps, isVisited);
         
         return answer;
     }
