@@ -2,30 +2,30 @@ import java.util.*;
 
 class Solution {
     public int[] solution(String[] id_list, String[] report, int k) {
-        Set<String> reportSet = new HashSet<>(Arrays.asList(report));
-        int[] answer = new int[id_list.length];
-        Map<String, Integer> count = new HashMap<>();
-        Map<String, List<String>> iReportWho = new HashMap<>();
-        for (String s: reportSet) {
+        Set<String> set = new HashSet<>(Arrays.asList(report));
+        Map<String, List<String>> reportMap = new HashMap<>();
+        Map<String, Integer> reportCount = new HashMap<>();
+        for (String s: set) {
             String[] str = s.split(" ");
             String from = str[0];
             String to = str[1];
-            count.put(to, count.getOrDefault(to, 0) + 1);
-            if (!iReportWho.containsKey(from)) {
-                iReportWho.put(from, new ArrayList<>());
+            reportCount.put(to, reportCount.getOrDefault(to, 0) + 1);
+            if (!reportMap.containsKey(from)) {
+                reportMap.put(from, reportMap.getOrDefault(from, new ArrayList<>()));
             }
-            iReportWho.get(from).add(to);
+            reportMap.get(from).add(to);   
         }
+        int[] answer = new int[id_list.length];
         for (int i = 0; i < id_list.length; i++) {
-            String s = id_list[i];
-            if (iReportWho.containsKey(s)) {
-                for (String a: iReportWho.get(s)) {
-                    if (count.get(a) >= k) {
-                        answer[i]++;
-                    }
+            String name = id_list[i];
+            if (reportMap.containsKey(name)) {
+                                    // System.out.println("신고자" + name);
+
+                for (String user: reportMap.get(name)) {
+                    // System.out.println(user);
+                    if (reportCount.get(user) >= k) answer[i]++;
                 }
-                
-            }  
+            }
         }
         return answer;
     }
