@@ -1,37 +1,36 @@
 import java.util.*;
 
 class Solution {
-    public int solution(int[][] maps) {
-        // BFS로 최단 거리 구하기
-        
-        // 시작점 예약 (0, 0, 거리 0)
-        int[] dr = {1, -1, 0, 0};
-        int[] dc = {0, 0, 1, -1};
-        int n = maps.length;
-        int m = maps[0].length;
+
+    static int[] dx = {-1, 1, 0, 0};
+    static int[] dy = {0, 0, -1, 1};
+    
+    static int bfs(int[][] maps, boolean[][] isVisited) {
         Queue<int[]> queue = new ArrayDeque<>();
-        boolean[][] visited = new boolean[n][m];
         queue.offer(new int[] {0, 0, 1});
-        visited[0][0] = true;
-        // System.out.println(Arrays.deepToString(visited));
-        
+        isVisited[0][0] = true;
         while (!queue.isEmpty()) {
-            // 현재 노드 방문
             int[] cur = queue.poll();
-            int r = cur[0], c = cur[1], dist = cur[2];
-            // if 도착지 도달하면 return
-            if (r == n - 1 &&  c == m - 1) return dist;
-            // 다음 노드 예약
+            if (cur[0] == maps.length - 1 && cur[1] == maps[0].length - 1) return cur[2];
             for (int i = 0; i < 4; i++) {
-                int nr = r + dr[i], nc = c + dc[i];
-                if (nr >= 0 && nr < n && nc >= 0 && nc < m && maps[nr][nc] == 1) {
-                    if (!visited[nr][nc]) {
-                        queue.offer(new int[]{nr, nc, dist + 1});
-                        visited[nr][nc] = true;
-                    }
+                int nx = cur[0] + dx[i];
+                int ny = cur[1] + dy[i];
+                if (nx < 0 || ny < 0 || nx >= maps.length || ny >= maps[0].length) continue;
+                if (!isVisited[nx][ny] && maps[nx][ny] == 1) {
+                    queue.offer(new int[] {nx, ny, cur[2] + 1});
+                    isVisited[nx][ny] = true;
                 }
             }
         }
+        
         return -1;
+    }
+    
+    public int solution(int[][] maps) {
+        int answer = 0;
+        boolean[][] isVisited = new boolean[maps.length][maps[0].length];
+        answer = bfs(maps, isVisited);
+        
+        return answer;
     }
 }
