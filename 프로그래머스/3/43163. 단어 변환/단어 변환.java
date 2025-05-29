@@ -19,20 +19,17 @@ class Solution {
     }
     
     public int solution(String begin, String target, String[] words) {
-        int answer = 0;
-        Set<String> isVisited = new HashSet<>();
         Queue<Word> queue = new ArrayDeque<>();
-        isVisited.add(begin);
+        Set<String> isVisited = new HashSet<>();
         queue.offer(new Word(begin, 0));
+        isVisited.add(begin);
         while (!queue.isEmpty()) {
             Word cur = queue.poll();
-            if (target.equals(cur.word)) return cur.count;
+            if (cur.word.equals(target)) return cur.count;
             for (String s: words) {
-                if (diff(s, cur.word) == 1) {
-                    if (!isVisited.contains(s)) {
-                        queue.offer(new Word(s, cur.count + 1));
-                        isVisited.add(s);
-                    }
+                if (!isVisited.contains(s) && diff(s, cur.word) == 1) {
+                    queue.offer(new Word(s, cur.count + 1));
+                    isVisited.add(s);
                 }
             }
         }
