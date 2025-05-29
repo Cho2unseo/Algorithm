@@ -2,10 +2,10 @@ import java.util.*;
 
 class Solution {
     
-    private int bfs(int start, List<List<Integer>> graph, int n) {
+    static int bfs(int n, List<List<Integer>> graph, int start) {
+        int count = 1;
         Queue<Integer> queue = new ArrayDeque<>();
         boolean[] isVisited = new boolean[n];
-        int count = 1;
         isVisited[start] = true;
         queue.offer(start);
         while (!queue.isEmpty()) {
@@ -22,7 +22,7 @@ class Solution {
     }
     
     public int solution(int n, int[][] wires) {
-        int answer = Integer.MAX_VALUE;
+        int answer = 101;
         List<List<Integer>> graph = new ArrayList<>();
         for (int i = 0; i <= n; i++) {
             graph.add(new ArrayList<>());
@@ -38,11 +38,11 @@ class Solution {
             int b = wires[i][1] - 1;
             graph.get(a).remove(Integer.valueOf(b));
             graph.get(b).remove(Integer.valueOf(a));
-            int res = bfs(a, graph, n);
+            int res = bfs(n, graph, a);
             graph.get(a).add(b);
             graph.get(b).add(a);
             int diff = Math.abs(n - 2 * res);
-            answer = Math.min(answer, diff);
+            answer = Math.min(diff, answer);
         }
         return answer;
     }
