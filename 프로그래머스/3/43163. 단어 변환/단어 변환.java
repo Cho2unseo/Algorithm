@@ -5,7 +5,6 @@ class Solution {
     class Word {
         String word;
         int count;
-        
         Word(String word, int count) {
             this.word = word;
             this.count = count;
@@ -21,6 +20,7 @@ class Solution {
     }
     
     public int solution(String begin, String target, String[] words) {
+        int answer = 0;
         Queue<Word> queue = new ArrayDeque<>();
         Set<String> isVisited = new HashSet<>();
         queue.offer(new Word(begin, 0));
@@ -37,6 +37,6 @@ class Solution {
                 }
             }
         }
-        return 0;
+        return answer;
     }
 }
