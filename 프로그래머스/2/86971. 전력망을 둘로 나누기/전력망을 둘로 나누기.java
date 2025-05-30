@@ -3,9 +3,9 @@ import java.util.*;
 class Solution {
     
     int bfs(int n, List<List<Integer>> graph, int start) {
-        int count = 1;
         Queue<Integer> queue = new ArrayDeque<>();
         boolean[] isVisited = new boolean[n];
+        int count = 1;
         queue.offer(start);
         isVisited[start] = true;
         while (!queue.isEmpty()) {
@@ -42,7 +42,7 @@ class Solution {
             graph.get(a).add(b);
             graph.get(b).add(a);
             int diff = Math.abs(n - 2 * res);
-            answer = Math.min(diff, answer);
+            answer = Math.min(answer, diff);
         }
         return answer;
     }
