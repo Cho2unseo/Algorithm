@@ -2,25 +2,24 @@ import java.util.*;
 
 class Solution {
     
-    static int bfs(int n, List<List<Integer>> graph, int start) {
+    int bfs(int n, List<List<Integer>> graph, int start) {
         int count = 1;
         Queue<Integer> queue = new ArrayDeque<>();
         boolean[] isVisited = new boolean[n];
-        isVisited[start] = true;
         queue.offer(start);
+        isVisited[start] = true;
         while (!queue.isEmpty()) {
             int cur = queue.poll();
             for (int a: graph.get(cur)) {
                 if (!isVisited[a]) {
-                    isVisited[a] = true;
                     queue.offer(a);
+                    isVisited[a] = true;
                     count++;
                 }
             }
         }
         return count;
     }
-    
     
     public int solution(int n, int[][] wires) {
         int answer = 101;
