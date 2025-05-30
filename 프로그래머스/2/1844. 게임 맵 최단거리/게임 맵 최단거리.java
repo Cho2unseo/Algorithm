@@ -5,7 +5,7 @@ class Solution {
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
     
-    static int bfs(int[][] maps) {
+    public int solution(int[][] maps) {
         Queue<int[]> queue = new ArrayDeque<>();
         boolean[][] isVisited = new boolean[maps.length][maps[0].length];
         queue.offer(new int[] {0, 0, 1});
@@ -24,11 +24,5 @@ class Solution {
             }
         }
         return -1;
-    }
-    
-    public int solution(int[][] maps) {
-        int answer = 0;
-        answer = bfs(maps);
-        return answer;
     }
 }
