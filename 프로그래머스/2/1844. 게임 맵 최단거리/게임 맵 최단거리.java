@@ -5,12 +5,11 @@ class Solution {
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
     
-    public int solution(int[][] maps) {
-        int answer = -1;
-        boolean[][] isVisited = new boolean[maps.length][maps[0].length];
+    static int bfs(int[][] maps) {
         Queue<int[]> queue = new ArrayDeque<>();
-        isVisited[0][0] = true;
+        boolean[][] isVisited = new boolean[maps.length][maps[0].length];
         queue.offer(new int[] {0, 0, 1});
+        isVisited[0][0] = true;
         while (!queue.isEmpty()) {
             int[] cur = queue.poll();
             if (cur[0] == maps.length - 1 && cur[1] == maps[0].length - 1) return cur[2];
@@ -24,7 +23,12 @@ class Solution {
                 }
             }
         }
-        
+        return -1;
+    }
+    
+    public int solution(int[][] maps) {
+        int answer = 0;
+        answer = bfs(maps);
         return answer;
     }
 }
