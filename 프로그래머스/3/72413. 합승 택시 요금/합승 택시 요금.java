@@ -8,19 +8,22 @@ class Solution {
             map[i][i] = 0;
         }
         for (int[] fare: fares) {
-            map[fare[0]][fare[1]] = fare[2];        map[fare[1]][fare[0]] = fare[2];
+            map[fare[0]][fare[1]] = fare[2];
+            map[fare[1]][fare[0]] = fare[2];
         }
         for (int k = 1; k <= n; k++) {
             for (int i = 1; i <= n; i++) {
                 for (int j = 1; j <= n; j++) {
-                    if (map[i][j] > map[i][k] + map[k][j]) map[i][j] = map[i][k] + map[k][j];
+                    if (map[i][j] > map[i][k] + map[k][j]) {
+                        map[i][j] = map[i][k] + map[k][j];
+                    }
                 }
             }
         }
-        int ans = map[s][a] + map[s][b];
+        int res = map[s][a] + map[s][b];
         for (int i = 1; i <= n; i++) {
-            ans = Math.min(ans, map[s][i] + map[i][a] + map[i][b]);
+            res = Math.min(res, map[s][i] + map[i][a] + map[i][b]);
         }
-        return ans;
+        return res;
     }
 }
