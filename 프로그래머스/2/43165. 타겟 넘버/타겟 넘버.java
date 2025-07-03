@@ -2,7 +2,7 @@ class Solution {
     
     int dfs(int[] numbers, int target, int sum, int idx) {
         if (numbers.length == idx) {
-            return (sum == target) ? 1 : 0;
+            return (target == sum) ? 1 : 0;
         }
         int count = 0;
         count += dfs(numbers, target, sum + numbers[idx], idx + 1);
