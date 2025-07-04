@@ -1,7 +1,6 @@
 import java.util.*;
 
 class Solution {
-    
     Set<Integer> set;
     
     boolean isPrime(int num) {
