@@ -20,10 +20,10 @@ class Solution {
                 }
             }
         }
-        int res = map[s][a] + map[s][b];
+        int ans = map[s][a] + map[s][b];
         for (int i = 1; i <= n; i++) {
-            res = Math.min(res, map[s][i] + map[i][a] + map[i][b]);
+            ans = Math.min(ans, map[s][i] + map[i][a] + map[i][b]);
         }
-        return res;
+        return ans;
     }
 }
