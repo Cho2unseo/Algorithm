@@ -16,18 +16,15 @@ public class Main {
         int end = 0;
         int cnt = 0;
         int sum = a[0];
-        while (true) {
-            if (end >= n) break;
+        while (end < n) {
             if (sum > m) {
                 sum -= a[start];
                 start++;
-            }
-            else if (sum == m) {
+            } else if (sum == m) {
                 cnt++;
                 end++;
                 sum += a[end];
-            }
-            else {
+            } else {
                 end++;
                 sum += a[end];
             }
