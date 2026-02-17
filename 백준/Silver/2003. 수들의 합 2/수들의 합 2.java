@@ -17,14 +17,16 @@ public class Main {
         int cnt = 0;
         int sum = a[0];
         while (end < n) {
-            if (sum > m) {
-                sum -= a[start];
-                start++;
-            } else if (sum == m) {
-                cnt++;
+            if (sum < m) {
                 end++;
                 sum += a[end];
-            } else {
+            }
+            else if (sum > m) {
+                sum -= a[start];
+                start++;
+            }
+            else {
+                cnt++;
                 end++;
                 sum += a[end];
             }
