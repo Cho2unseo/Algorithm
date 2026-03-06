@@ -25,8 +25,8 @@ public class Main {
                     else if (start == i) start++;
                     else if (end == i) end--;
                 }
-                else if (a[start] + a[end] > a[i]) end--;
-                else start++;
+                else if (a[start] + a[end] < a[i]) start++;
+                else end--;
             }
         }
         System.out.println(cnt);
